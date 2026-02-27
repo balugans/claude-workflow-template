@@ -31,22 +31,31 @@ Problem statement → PRD → Architecture → Component Designs → Tasks → T
 
 ## Setup
 
-### New project (greenfield)
+Clone this repo once. Then run `install.sh` from inside any project you want to set up:
 
 ```bash
-git clone https://github.com/your-username/claude-workflow-template my-project
-cd my-project
-rm -rf .git && git init
+git clone https://github.com/your-username/claude-template-setup ~/.claude-template
+cd /path/to/your-project
+bash ~/.claude-template/install.sh
 ```
 
-### Existing project (brownfield)
+The script asks which profile to use, then copies the right commands, agents, and config files into your project.
 
-```bash
-cp -r /path/to/claude-workflow-template/.claude /path/to/your-project/
-cp /path/to/claude-workflow-template/CLAUDE.md /path/to/your-project/
-cp /path/to/claude-workflow-template/WORKFLOW.md /path/to/your-project/
-cp /path/to/claude-workflow-template/.claudeignore /path/to/your-project/
-```
+---
+
+## Profiles
+
+### `se` — Software Engineering
+
+For backend services, APIs, CLIs, and full-stack web projects. Includes the full greenfield/brownfield workflow with TDD agents, architecture commands, and integration testing.
+
+### `ml` — Machine Learning
+
+For data science, model training, and ML pipelines. Includes the same shared base (TDD agents, code review, commit/push/PR) with ML-specific commands layered on top.
+
+Both profiles share a common base from `shared/` — the same TDD agents, code review, and commit workflow apply everywhere.
+
+---
 
 ### After setup — two things to customise
 
