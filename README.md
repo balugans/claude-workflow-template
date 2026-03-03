@@ -1,6 +1,6 @@
 # Claude Workflow Template
 
-A lean, structured Claude Code workflow for building software from scratch (greenfield) or adding features to existing projects (brownfield). Built around the philosophy of Boris Cherny (creator of Claude Code): vanilla setup, disciplined phases, docs-as-context, and TDD enforced through context isolation.
+A lean, structured Claude Code workflow for software engineering (greenfield/brownfield) and machine learning projects. Built around the philosophy of Boris Cherny (creator of Claude Code): vanilla setup, disciplined phases, docs-as-context, and TDD enforced through context isolation.
 
 ---
 
@@ -166,6 +166,59 @@ Shift+Tab (twice) → describe the feature
 # 10. Integration test — verifies old + new together
 /integration-test
 ```
+
+---
+
+## ML Workflow
+
+Use this when working on data science, model training, or ML pipeline projects.
+
+```
+# 1. Enter Plan Mode and define the problem
+Shift+Tab (twice) → describe what you are predicting/building and what data you have
+
+# 2. Generate the PRD
+/prd
+/clear
+
+# 3. Generate the architecture (data pipeline, model, evaluation, serving)
+/architecture
+/clear
+
+# 4. Design each component (e.g. DataLoader, Trainer, Evaluator, Pipeline)
+/design-component "ComponentName"
+/clear
+
+# 5. Review all component designs for consistency
+/architecture-review
+/clear
+
+# 6. Break each component into tasks
+/breakdown-tasks "ComponentName"
+/clear
+
+# 7. Implement each task with TDD (repeat per task)
+> Use tdd-red agent on task <TASK-ID>
+/clear
+> Use tdd-green agent on task <TASK-ID>
+/clear
+> Use tdd-refactor agent on task <TASK-ID>
+/clear
+/code-review
+/commit-push-pr
+/clear
+
+# 8. Integration test — verifies full pipeline end to end
+/integration-test
+```
+
+### What changes for ML
+
+- **PRD** — focus on problem definition, success metrics (accuracy, F1, latency), data sources, and constraints
+- **Architecture** — covers data pipeline, feature engineering, model choice, training loop, evaluation harness, and serving/export
+- **Component design** — each stage of the pipeline (ingestion, preprocessing, training, evaluation, export) gets its own design doc
+- **TDD** — test data shapes, pipeline outputs, and model interfaces rather than business logic; use fixtures with small synthetic datasets
+- **Integration test** — runs the full pipeline on a sample dataset and asserts outputs match expected shapes and metric thresholds
 
 ---
 
